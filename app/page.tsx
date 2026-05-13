@@ -1,24 +1,14 @@
 export default function Home() {
-  const slides = [
-    "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1600&auto=format&fit=crop",
-  ];
-
   return (
     <main className="relative h-screen overflow-hidden bg-black text-white">
-      {/* Background slideshow */}
-      <div className="absolute inset-0 flex animate-slide">
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className="min-w-full h-screen bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${slide})`,
-            }}
-          />
-        ))}
-      </div>
+      {/* Background */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1600&auto=format&fit=crop')",
+        }}
+      />
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/60" />
@@ -32,7 +22,7 @@ export default function Home() {
             </p>
 
             <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
-              Mewujudkan Arsitektur Mewah Dengan Tampilan Elegan
+              Mewujudkan Arsitektur Mewah Dengan Tampilan Premium
             </h1>
 
             <p className="text-lg text-neutral-300 leading-relaxed mb-10">
@@ -58,35 +48,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      {/* Animation */}
-      <style jsx global>{`
-        @keyframes slide {
-          0% {
-            transform: translateX(0%);
-          }
-          30% {
-            transform: translateX(0%);
-          }
-          35% {
-            transform: translateX(-100%);
-          }
-          65% {
-            transform: translateX(-100%);
-          }
-          70% {
-            transform: translateX(-200%);
-          }
-          100% {
-            transform: translateX(0%);
-          }
-        }
-
-        .animate-slide {
-          width: 300%;
-          animation: slide 15s infinite;
-        }
-      `}</style>
     </main>
   );
 }
