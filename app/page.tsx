@@ -103,30 +103,7 @@ export default function ArchitecturePortfolioWebsite() {
         </div>
 
         <style jsx>{`
-          @keyframes slide {
-            0% {
-              transform: translateX(0%);
-            }
-            30% {
-              transform: translateX(0%);
-            }
-            35% {
-              transform: translateX(-33.333%);
-            }
-            65% {
-              transform: translateX(-33.333%);
-            }
-            70% {
-              transform: translateX(-66.666%);
-            }
-            95% {
-              transform: translateX(-66.666%);
-            }
-            100% {
-              transform: translateX(0%);
-            }
-          }
-        `}</style>
+          }</style>
       </section>
 
       {/* ABOUT */}
