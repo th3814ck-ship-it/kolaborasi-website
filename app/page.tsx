@@ -6,14 +6,14 @@ export default function Home() {
   ];
 
   return (
-    <main className="relative h-screen overflow-hidden text-white">
-      {/* Background Slideshow */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden">
-        <div className="slideshow flex h-full">
+    <main className="relative h-screen overflow-hidden text-white bg-black">
+      {/* Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="flex w-[300%] h-full animate-slide">
           {slides.map((slide, index) => (
             <div
               key={index}
-              className="w-full h-full flex-shrink-0 bg-cover bg-center"
+              className="w-full h-full bg-cover bg-center"
               style={{
                 backgroundImage: `url(${slide})`,
               }}
@@ -60,35 +60,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      {/* CSS */}
-      <style jsx global>{`
-        .slideshow {
-          width: 300%;
-          animation: slideShow 15s infinite;
-        }
-
-        @keyframes slideShow {
-          0% {
-            transform: translateX(0%);
-          }
-          30% {
-            transform: translateX(0%);
-          }
-          35% {
-            transform: translateX(-33.333%);
-          }
-          65% {
-            transform: translateX(-33.333%);
-          }
-          70% {
-            transform: translateX(-66.666%);
-          }
-          100% {
-            transform: translateX(0%);
-          }
-        }
-      `}</style>
     </main>
   );
 }
