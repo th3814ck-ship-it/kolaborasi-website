@@ -174,10 +174,17 @@ export default function Home() {
             </h3>
 
             <p className="text-xl text-neutral-300 leading-relaxed">
-              Kolaborasi menghadirkan layanan arsitektur,
-              interior, visualisasi 3D, dan kontraktor premium
-              dengan pendekatan modern luxury dan detail elegan.
-            </p>
+  Kolaborasi adalah studio arsitektur dan kontraktor premium
+  dengan pengalaman lebih dari 15 tahun dalam menangani
+  berbagai proyek hunian modern, villa eksklusif,
+  cafe aesthetic, interior mewah, hingga proyek komersial.
+  <br /><br />
+  Kami menghadirkan desain yang elegan,
+  detail konstruksi berkualitas tinggi,
+  serta pengerjaan profesional dengan standar modern luxury
+  untuk menciptakan ruang yang estetis, fungsional,
+  dan bernilai tinggi.
+</p>
 
           </div>
 

@@ -1,16 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: #000;
+  margin: 0;
+  padding: 0;
+  background: black;
   color: white;
-  overflow-x: hidden;
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 /* SLIDESHOW */
@@ -19,7 +19,7 @@ body {
   display: flex;
   width: 600vw;
   height: 100vh;
-  animation: slideshow 42s infinite ease-in-out;
+  animation: slideshow 30s infinite;
 }
 
 .slide-item {
@@ -28,48 +28,20 @@ body {
   flex-shrink: 0;
 }
 
-@keyframes slideshow {
-  0%, 14% {
-    transform: translateX(0);
-  }
-
-  16%, 30% {
-    transform: translateX(-100vw);
-  }
-
-  32%, 46% {
-    transform: translateX(-200vw);
-  }
-
-  48%, 62% {
-    transform: translateX(-300vw);
-  }
-
-  64%, 78% {
-    transform: translateX(-400vw);
-  }
-
-  80%, 94% {
-    transform: translateX(-500vw);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
+.slide-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* IMAGE ANIMATION */
+/* FULLSCREEN IMAGE ANIMATION */
 
-@keyframes zoomIn {
-  from {
-    opacity: 0;
-    transform: scale(0.85);
-  }
+.animate-fade {
+  animation: fadeIn 0.3s ease;
+}
 
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.animate-zoom {
+  animation: zoomIn 0.3s ease;
 }
 
 @keyframes fadeIn {
@@ -82,10 +54,63 @@ body {
   }
 }
 
-.animate-zoom {
-  animation: zoomIn 0.35s ease;
+@keyframes zoomIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
-.animate-fade {
-  animation: fadeIn 0.35s ease;
+/* SLIDE ANIMATION */
+
+@keyframes slideshow {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  15% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-100vw);
+  }
+
+  35% {
+    transform: translateX(-100vw);
+  }
+
+  40% {
+    transform: translateX(-200vw);
+  }
+
+  55% {
+    transform: translateX(-200vw);
+  }
+
+  60% {
+    transform: translateX(-300vw);
+  }
+
+  75% {
+    transform: translateX(-300vw);
+  }
+
+  80% {
+    transform: translateX(-400vw);
+  }
+
+  95% {
+    transform: translateX(-400vw);
+  }
+
+  100% {
+    transform: translateX(-500vw);
+  }
 }
