@@ -46,17 +46,9 @@ export default function Home() {
 
           <nav className="hidden md:flex gap-10 uppercase tracking-[0.2em] text-sm font-medium">
 
-            <a href="#about" className="hover:text-neutral-300 transition">
-              Tentang Kami
-            </a>
-
-            <a href="#services" className="hover:text-neutral-300 transition">
-              Layanan Kami
-            </a>
-
-            <a href="#pricing" className="hover:text-neutral-300 transition">
-              Estimasi Harga
-            </a>
+            <a href="#about">Tentang Kami</a>
+            <a href="#services">Layanan Kami</a>
+            <a href="#pricing">Estimasi Harga</a>
 
           </nav>
 
@@ -74,10 +66,7 @@ export default function Home() {
 
             {slides.map((slide, index) => (
 
-              <div
-                key={index}
-                className="slide-item relative"
-              >
+              <div key={index} className="slide-item">
 
                 <img
                   src={slide}
@@ -93,7 +82,7 @@ export default function Home() {
 
         </div>
 
-        {/* DARK OVERLAY */}
+        {/* OVERLAY */}
         <div className="absolute inset-0 bg-black/55" />
 
         {/* CONTENT */}
@@ -117,9 +106,11 @@ export default function Home() {
 
               <p className="text-xl md:text-2xl text-neutral-200 leading-relaxed max-w-3xl mb-12">
 
-                Jasa arsitektur dan kontraktor premium untuk hunian modern,
-                villa eksklusif, interior mewah, cafe aesthetic,
-                hingga proyek komersial premium.
+                Jasa arsitektur dan kontraktor premium
+                dengan pengalaman lebih dari 15 tahun
+                dalam menangani proyek hunian modern,
+                villa eksklusif, interior mewah,
+                cafe aesthetic hingga proyek komersial.
 
               </p>
 
@@ -174,17 +165,15 @@ export default function Home() {
             </h3>
 
             <p className="text-xl text-neutral-300 leading-relaxed">
-  Kolaborasi adalah studio arsitektur dan kontraktor premium
-  dengan pengalaman lebih dari 15 tahun dalam menangani
-  berbagai proyek hunian modern, villa eksklusif,
-  cafe aesthetic, interior mewah, hingga proyek komersial.
-  <br /><br />
-  Kami menghadirkan desain yang elegan,
-  detail konstruksi berkualitas tinggi,
-  serta pengerjaan profesional dengan standar modern luxury
-  untuk menciptakan ruang yang estetis, fungsional,
-  dan bernilai tinggi.
-</p>
+              Kolaborasi adalah studio arsitektur dan kontraktor premium
+              dengan pengalaman lebih dari 15 tahun dalam menangani
+              berbagai proyek hunian modern, villa eksklusif,
+              cafe aesthetic, interior mewah, hingga proyek komersial.
+              <br /><br />
+              Kami menghadirkan desain yang elegan,
+              detail konstruksi berkualitas tinggi,
+              serta pengerjaan profesional dengan standar modern luxury.
+            </p>
 
           </div>
 
@@ -363,7 +352,85 @@ export default function Home() {
 
       </section>
 
-      {/* FULLSCREEN PREVIEW */}
+      {/* FOOTER */}
+      <footer className="bg-black border-t border-white/10 px-8 py-24">
+
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-20">
+
+          <div>
+
+            <h4 className="text-4xl font-bold mb-10">
+              MENU
+            </h4>
+
+            <div className="flex flex-col gap-5 text-neutral-300 text-lg">
+
+              <a href="#about">Tentang Kami</a>
+              <a href="#portfolio">Portfolio</a>
+              <a href="#pricing">Estimasi Harga</a>
+              <a href="#services">Layanan Kami</a>
+
+            </div>
+
+          </div>
+
+          <div>
+
+            <h4 className="text-4xl font-bold mb-10">
+              HUBUNGI KAMI
+            </h4>
+
+            <div className="flex flex-col gap-5 text-neutral-300 text-lg">
+
+              <p>
+                ☎ Konsultasi:
+                <br />
+                +62 821-6645-837
+              </p>
+
+              <p>
+                ✉ Email:
+                <br />
+                info@kolaborasiarchitect.com
+              </p>
+
+              <p>
+                📍 Jakarta, Indonesia
+              </p>
+
+            </div>
+
+          </div>
+
+          <div>
+
+            <h4 className="text-4xl font-bold mb-10">
+              IKUTI KAMI
+            </h4>
+
+            <div className="flex gap-5 text-3xl">
+
+              <span>📷</span>
+              <span>▶</span>
+              <span>🎵</span>
+              <span>💼</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div className="border-t border-white/10 mt-20 pt-10 text-center text-neutral-500">
+
+          © 2026 Kolaborasi Architecture & Contractor.
+          All Rights Reserved.
+
+        </div>
+
+      </footer>
+
+      {/* FULLSCREEN IMAGE */}
       {selectedImage && (
 
         <div
