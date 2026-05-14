@@ -1,15 +1,18 @@
 export default function Home() {
   const slides = [
-    "/projects/slide1.jpg",
-    "/projects/slide2.jpg",
-    "/projects/slide3.jpg",
-  ];
+  "/projects/slide1.jpg",
+  "/projects/slide2.jpg",
+  "/projects/slide3.jpg",
+  "/projects/slide4.jpg",
+  "/projects/slide5.jpg",
+  "/projects/slide6.jpg",
+];
 
   return (
     <main className="relative h-screen overflow-hidden text-white bg-black">
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="flex w-[300%] h-full animate-slide">
+        <div className="flex w-[600%] h-full animate-slide">
           {slides.map((slide, index) => (
             <div
               key={index}
