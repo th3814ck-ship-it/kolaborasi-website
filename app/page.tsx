@@ -38,21 +38,20 @@ export default function ArchitecturePortfolioWebsite() {
         </div>
       </header>
 
-      {/* HERO */}
+      {/* HERO SLIDESHOW */}
       <section className="relative h-screen overflow-hidden">
-        <div className="absolute inset-0 flex animate-slide">
-          {slides.map((slide, index) => (
-            <div
-              key={index}
-              className="w-screen h-screen flex-shrink-0"
-            >
-              <img
-                src={slide}
-                alt={`Slide ${index + 1}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ))}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="slider-track">
+            {slides.map((slide, index) => (
+              <div key={index} className="slide-item">
+                <img
+                  src={slide}
+                  alt={`Slide ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="absolute inset-0 bg-black/55" />
@@ -73,14 +72,14 @@ export default function ArchitecturePortfolioWebsite() {
               <div className="flex flex-wrap gap-4">
                 <a
                   href="#portfolio"
-                  className="bg-white text-black px-8 py-4 rounded-2xl font-semibold"
+                  className="bg-white text-black px-8 py-4 rounded-2xl font-semibold hover:scale-105 transition"
                 >
                   Lihat Portfolio
                 </a>
 
                 <a
                   href="https://wa.me/6282188357297"
-                  className="border border-white/20 px-8 py-4 rounded-2xl"
+                  className="border border-white/20 px-8 py-4 rounded-2xl hover:bg-white hover:text-black transition"
                 >
                   Konsultasi Gratis
                 </a>
@@ -110,7 +109,8 @@ export default function ArchitecturePortfolioWebsite() {
 
             <p className="text-lg text-neutral-300 leading-relaxed">
               Kolaborasi menghadirkan layanan arsitektur, interior,
-              visualisasi 3D, dan kontraktor premium.
+              visualisasi 3D, dan kontraktor premium dengan pendekatan modern
+              luxury.
             </p>
           </div>
         </div>
@@ -134,10 +134,40 @@ export default function ArchitecturePortfolioWebsite() {
             ].map((service, index) => (
               <div
                 key={index}
-                className="bg-black border border-white/10 rounded-[2rem] p-10"
+                className="bg-black border border-white/10 rounded-[2rem] p-10 hover:-translate-y-2 transition duration-500"
               >
                 <div className="text-5xl mb-6">✨</div>
+
                 <h4 className="text-3xl font-semibold mb-4">{service}</h4>
+
+                <p className="text-neutral-400 leading-relaxed">
+                  Pengerjaan profesional dengan desain modern dan kualitas premium.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PRICING */}
+      <section id="pricing" className="px-6 py-24 bg-black">
+        <div className="max-w-7xl mx-auto text-center">
+          <h3 className="text-4xl md:text-6xl font-bold mb-16">
+            Estimasi Harga
+          </h3>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              ["Desain Arsitektur", "Mulai 50rb/m²"],
+              ["Interior Design", "Mulai 150rb/m²"],
+              ["Jasa Kontraktor", "Mulai 4jt/m²"],
+            ].map(([title, price], index) => (
+              <div
+                key={index}
+                className="bg-neutral-900 rounded-[2rem] p-10 border border-white/10"
+              >
+                <h4 className="text-3xl font-semibold mb-6">{title}</h4>
+                <p className="text-5xl font-bold">{price}</p>
               </div>
             ))}
           </div>
@@ -145,7 +175,7 @@ export default function ArchitecturePortfolioWebsite() {
       </section>
 
       {/* PORTFOLIO */}
-      <section id="portfolio" className="px-6 py-24 bg-black">
+      <section id="portfolio" className="px-6 py-24 bg-neutral-950">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-4xl md:text-6xl font-bold text-center mb-20">
             Gallery Proyek Kolaborasi
@@ -193,16 +223,16 @@ export default function ArchitecturePortfolioWebsite() {
         </div>
       </section>
 
-      {/* MODAL */}
+      {/* IMAGE MODAL */}
       {selectedImage && (
         <div
-          className="fixed inset-0 z-[999] bg-black/95 flex items-center justify-center p-6"
+          className="fixed inset-0 z-[999] bg-black/90 backdrop-blur-md flex items-center justify-center p-6 animate-fade"
           onClick={() => setSelectedImage(null)}
         >
           <img
             src={selectedImage}
             alt="Preview"
-            className="max-w-full max-h-full object-contain rounded-2xl"
+            className="max-w-full max-h-full object-contain rounded-3xl shadow-2xl animate-zoom"
           />
         </div>
       )}

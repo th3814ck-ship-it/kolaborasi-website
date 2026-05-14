@@ -1,75 +1,97 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: #000;
+  color: white;
+  overflow-x: hidden;
   font-family: Arial, Helvetica, sans-serif;
 }
-@keyframes slide {
-  0% {
-    transform: translateX(0%);
+
+/* SLIDESHOW */
+
+.slider-track {
+  display: flex;
+  width: 600vw;
+  height: 100vh;
+  animation: slideshow 42s infinite ease-in-out;
+}
+
+.slide-item {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+}
+
+@keyframes slideshow {
+  0%,
+  14% {
+    transform: translateX(0);
   }
 
-  15% {
-    transform: translateX(0%);
+  16%,
+  30% {
+    transform: translateX(-100vw);
   }
 
-  20% {
-    transform: translateX(-16.666%);
+  32%,
+  46% {
+    transform: translateX(-200vw);
   }
 
-  35% {
-    transform: translateX(-16.666%);
+  48%,
+  62% {
+    transform: translateX(-300vw);
   }
 
-  40% {
-    transform: translateX(-33.333%);
+  64%,
+  78% {
+    transform: translateX(-400vw);
   }
 
-  55% {
-    transform: translateX(-33.333%);
-  }
-
-  60% {
-    transform: translateX(-50%);
-  }
-
-  75% {
-    transform: translateX(-50%);
-  }
-
-  80% {
-    transform: translateX(-66.666%);
-  }
-
-  95% {
-    transform: translateX(-66.666%);
+  80%,
+  94% {
+    transform: translateX(-500vw);
   }
 
   100% {
-    transform: translateX(-83.333%);
+    transform: translateX(0);
   }
 }
 
-.animate-slide {
-  animation: slide 30s infinite;
+/* IMAGE MODAL */
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-zoom {
+  animation: zoomIn 0.35s ease;
+}
+
+.animate-fade {
+  animation: fadeIn 0.35s ease;
 }
