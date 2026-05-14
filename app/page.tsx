@@ -49,7 +49,7 @@ export default function ArchitecturePortfolioWebsite() {
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className="w-full h-full bg-cover bg-center flex-shrink-0"
+                className="w-full h-full bg-contain bg-center bg-no-repeat flex-shrink-0"
                 style={{
                   backgroundImage: `url(${slide})`,
                 }}
