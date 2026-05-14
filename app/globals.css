@@ -29,27 +29,47 @@ body {
     transform: translateX(0%);
   }
 
-  30% {
+  15% {
     transform: translateX(0%);
   }
 
+  20% {
+    transform: translateX(-16.666%);
+  }
+
   35% {
+    transform: translateX(-16.666%);
+  }
+
+  40% {
     transform: translateX(-33.333%);
   }
 
-  65% {
+  55% {
     transform: translateX(-33.333%);
   }
 
-  70% {
+  60% {
+    transform: translateX(-50%);
+  }
+
+  75% {
+    transform: translateX(-50%);
+  }
+
+  80% {
+    transform: translateX(-66.666%);
+  }
+
+  95% {
     transform: translateX(-66.666%);
   }
 
   100% {
-    transform: translateX(0%);
+    transform: translateX(-83.333%);
   }
 }
 
 .animate-slide {
-  animation: slide 8s infinite;
+  animation: slide 30s infinite;
 }
