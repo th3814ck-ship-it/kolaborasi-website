@@ -66,7 +66,10 @@ export default function Home() {
 
             {slides.map((slide, index) => (
 
-              <div key={index} className="slide-item">
+              <div
+                key={index}
+                className="slide-item"
+              >
 
                 <img
                   src={slide}
@@ -83,7 +86,7 @@ export default function Home() {
         </div>
 
         {/* OVERLAY */}
-        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-black/60" />
 
         {/* CONTENT */}
         <div className="relative z-10 flex items-center h-full">
@@ -125,6 +128,8 @@ export default function Home() {
 
                 <a
                   href="https://wa.me/6282188357297"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="border border-white/20 bg-white/10 backdrop-blur-md px-10 py-5 rounded-2xl text-lg hover:bg-white hover:text-black transition duration-300"
                 >
                   Konsultasi Gratis
@@ -165,14 +170,18 @@ export default function Home() {
             </h3>
 
             <p className="text-xl text-neutral-300 leading-relaxed">
+
               Kolaborasi adalah studio arsitektur dan kontraktor premium
               dengan pengalaman lebih dari 15 tahun dalam menangani
               berbagai proyek hunian modern, villa eksklusif,
               cafe aesthetic, interior mewah, hingga proyek komersial.
+
               <br /><br />
+
               Kami menghadirkan desain yang elegan,
               detail konstruksi berkualitas tinggi,
               serta pengerjaan profesional dengan standar modern luxury.
+
             </p>
 
           </div>
@@ -357,6 +366,7 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-20">
 
+          {/* MENU */}
           <div>
 
             <h4 className="text-4xl font-bold mb-10">
@@ -374,6 +384,7 @@ export default function Home() {
 
           </div>
 
+          {/* CONTACT */}
           <div>
 
             <h4 className="text-4xl font-bold mb-10">
@@ -382,22 +393,25 @@ export default function Home() {
 
             <div className="flex flex-col gap-5 text-neutral-300 text-lg">
 
-              <<p>
-  💬 WhatsApp:
-  <br />
-  <a
-    href="https://wa.me/628216645837"
-    target="_blank"
-    className="hover:text-green-400 transition"
-  >
-    +62 821-8835-7297
-  </a>
-</p>
+              <p>
+                💬 WhatsApp:
+                <br />
+
+                <a
+                  href="https://wa.me/6282188357297"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-green-400 transition"
+                >
+                  +62 821-8835-7297
+                </a>
+
+              </p>
 
               <p>
                 ✉ Email:
                 <br />
-                kolaborasi@gmail.com
+                info@kolaborasiarchitect.com
               </p>
 
               <p>
@@ -408,47 +422,68 @@ export default function Home() {
 
           </div>
 
+          {/* SOCIAL */}
           <div>
 
             <h4 className="text-4xl font-bold mb-10">
               IKUTI KAMI
             </h4>
 
-            <div className="flex gap-6 text-4xl">
+            <div className="flex gap-6">
 
-  <a
-    href="https://facebook.com"
-    target="_blank"
-    className="hover:scale-110 transition duration-300"
-  >
-    📘
-  </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition duration-300"
+              >
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
+                  alt="Facebook"
+                  className="w-10 h-10"
+                />
+              </a>
 
-  <a
-    href="https://instagram.com"
-    target="_blank"
-    className="hover:scale-110 transition duration-300"
-  >
-    📸
-  </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition duration-300"
+              >
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
+                  alt="Instagram"
+                  className="w-10 h-10"
+                />
+              </a>
 
-  <a
-    href="https://tiktok.com"
-    target="_blank"
-    className="hover:scale-110 transition duration-300"
-  >
-    🎵
-  </a>
+              <a
+                href="https://tiktok.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition duration-300"
+              >
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"
+                  alt="TikTok"
+                  className="w-10 h-10"
+                />
+              </a>
 
-  <a
-    href="https://youtube.com"
-    target="_blank"
-    className="hover:scale-110 transition duration-300"
-  >
-    ▶️
-  </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition duration-300"
+              >
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
+                  alt="YouTube"
+                  className="w-10 h-10"
+                />
+              </a>
 
-</div>
+            </div>
 
           </div>
 
