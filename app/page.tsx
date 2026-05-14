@@ -49,7 +49,7 @@ export default function ArchitecturePortfolioWebsite() {
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className="w-full h-full bg-contain bg-center bg-no-repeat flex-shrink-0"
+                className="w-full h-full bg-cover bg-center flex-shrink-0"
                 style={{
                   backgroundImage: `url(${slide})`,
                 }}
@@ -232,13 +232,13 @@ export default function ArchitecturePortfolioWebsite() {
               {exteriorProjects.map((item) => (
                 <div
                   key={item}
-                  className="group overflow-hidden rounded-[2rem] border border-white/10 bg-black hover:-translate-y-2 transition duration-500"
+                  className="group overflow-hidden rounded-[2rem] border border-white/10 bg-black hover:-translate-y-2 transition duration-500 cursor-pointer"
                 >
                   <div className="overflow-hidden">
                     <img
                       src={`/projects/exterior${item}.jpg`}
                       alt="Exterior"
-                      className="h-72 w-full object-cover group-hover:scale-110 transition duration-700"
+                      className="h-72 w-full object-cover group-hover:scale-110 transition duration-700 active:scale-150"
                     />
                   </div>
                 </div>
@@ -253,13 +253,13 @@ export default function ArchitecturePortfolioWebsite() {
               {interiorProjects.map((item) => (
                 <div
                   key={item}
-                  className="group overflow-hidden rounded-[2rem] border border-white/10 bg-black hover:-translate-y-2 transition duration-500"
+                  className="group overflow-hidden rounded-[2rem] border border-white/10 bg-black hover:-translate-y-2 transition duration-500 cursor-pointer"
                 >
                   <div className="overflow-hidden">
                     <img
                       src={`/projects/interior${item}.jpg`}
                       alt="Interior"
-                      className="h-72 w-full object-cover group-hover:scale-110 transition duration-700"
+                      className="h-72 w-full object-cover group-hover:scale-110 transition duration-700 active:scale-150"
                     />
                   </div>
                 </div>
