@@ -382,20 +382,26 @@ export default function Home() {
 
             <div className="flex flex-col gap-5 text-neutral-300 text-lg">
 
-              <p>
-                ☎ Konsultasi:
-                <br />
-                +62 821-6645-837
-              </p>
+              <<p>
+  💬 WhatsApp:
+  <br />
+  <a
+    href="https://wa.me/628216645837"
+    target="_blank"
+    className="hover:text-green-400 transition"
+  >
+    +62 821-8835-7297
+  </a>
+</p>
 
               <p>
                 ✉ Email:
                 <br />
-                info@kolaborasiarchitect.com
+                kolaborasi@gmail.com
               </p>
 
               <p>
-                📍 Jakarta, Indonesia
+                📍 Bandung, Indonesia
               </p>
 
             </div>
@@ -408,14 +414,41 @@ export default function Home() {
               IKUTI KAMI
             </h4>
 
-            <div className="flex gap-5 text-3xl">
+            <div className="flex gap-6 text-4xl">
 
-              <span>📷</span>
-              <span>▶</span>
-              <span>🎵</span>
-              <span>💼</span>
+  <a
+    href="https://facebook.com"
+    target="_blank"
+    className="hover:scale-110 transition duration-300"
+  >
+    📘
+  </a>
 
-            </div>
+  <a
+    href="https://instagram.com"
+    target="_blank"
+    className="hover:scale-110 transition duration-300"
+  >
+    📸
+  </a>
+
+  <a
+    href="https://tiktok.com"
+    target="_blank"
+    className="hover:scale-110 transition duration-300"
+  >
+    🎵
+  </a>
+
+  <a
+    href="https://youtube.com"
+    target="_blank"
+    className="hover:scale-110 transition duration-300"
+  >
+    ▶️
+  </a>
+
+</div>
 
           </div>
 
