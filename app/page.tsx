@@ -1,31 +1,66 @@
+```tsx
 "use client";
 
 import { useState } from "react";
 
 export default function Home() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const slides = [
-    "/projects/slide1.jpg",
-    "/projects/slide2.jpg",
-    "/projects/slide3.jpg",
-    "/projects/slide4.jpg",
-    "/projects/slide5.jpg",
-    "/projects/slide6.jpg",
+  const [selectedProject, setSelectedProject] = useState<any | null>(null);
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const projects = [
+    {
+      name: "Villa Modern Tropis",
+      client: "Bapak Andi Wijaya",
+      location: "Bandung, Jawa Barat",
+      category: "Exterior",
+      images: [
+        "/projects/exterior1.jpg",
+        "/projects/exterior2.jpg",
+        "/projects/exterior3.jpg",
+      ],
+    },
+
+    {
+      name: "Luxury Cafe Interior",
+      client: "Cafe Ruang Senja",
+      location: "Jakarta Selatan",
+      category: "Interior",
+      images: [
+        "/projects/interior1.jpg",
+        "/projects/interior2.jpg",
+        "/projects/interior3.jpg",
+      ],
+    },
+
+    {
+      name: "Modern House Design",
+      client: "Ibu Clara",
+      location: "Surabaya",
+      category: "Exterior",
+      images: [
+        "/projects/exterior4.jpg",
+        "/projects/exterior5.jpg",
+        "/projects/exterior6.jpg",
+      ],
+    },
+
+    {
+      name: "Luxury Bedroom",
+      client: "Bapak Kevin",
+      location: "Bali",
+      category: "Interior",
+      images: [
+        "/projects/interior4.jpg",
+        "/projects/interior5.jpg",
+        "/projects/interior6.jpg",
+      ],
+    },
   ];
 
-  const exteriorImages = Array.from(
-    { length: 20 },
-    (_, i) => `/projects/exterior${i + 1}.jpg`
-  );
-
-  const interiorImages = Array.from(
-    { length: 20 },
-    (_, i) => `/projects/interior${i + 1}.jpg`
-  );
-
   return (
-    <main className="bg-black text-white overflow-x-hidden">
+
+    <main className="bg-black text-white overflow-x-hidden min-h-screen">
 
       {/* NAVBAR */}
       <header className="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-xl border-b border-white/10">
@@ -39,16 +74,17 @@ export default function Home() {
             </h1>
 
             <p className="uppercase tracking-[0.35em] text-xs text-neutral-300 mt-2">
-              Design • Visual • Architecture • Interior • Contractor
+              Design • Architecture • Interior • Contractor
             </p>
 
           </div>
 
           <nav className="hidden md:flex gap-10 uppercase tracking-[0.2em] text-sm font-medium">
 
-            <a href="#about">Tentang Kami</a>
-            <a href="#services">Layanan Kami</a>
-            <a href="#pricing">Estimasi Harga</a>
+            <a href="#about">Tentang</a>
+            <a href="#services">Layanan</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Kontak</a>
 
           </nav>
 
@@ -57,87 +93,47 @@ export default function Home() {
       </header>
 
       {/* HERO */}
-      <section className="relative h-screen overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
 
-        {/* SLIDESHOW */}
-        <div className="absolute inset-0 overflow-hidden">
+        <img
+          src="/projects/slide1.jpg"
+          alt="Hero"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
 
-          <div className="slider-track">
-
-            {slides.map((slide, index) => (
-
-              <div
-                key={index}
-                className="slide-item"
-              >
-
-                <img
-                  src={slide}
-                  alt={`Slide ${index + 1}`}
-                  className="w-full h-full object-cover"
-                />
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-        {/* OVERLAY */}
         <div className="absolute inset-0 bg-black/60" />
 
-        {/* CONTENT */}
-        <div className="relative z-10 flex items-center h-full">
+        <div className="relative z-10 max-w-6xl px-8 text-center">
 
-          <div className="max-w-7xl mx-auto px-8 w-full">
+          <h2 className="text-6xl md:text-8xl font-black leading-tight mb-10">
+            Mewujudkan
+            <br />
+            Arsitektur Modern
+            <br />
+            Premium
+          </h2>
 
-            <div className="max-w-5xl">
+          <p className="text-xl md:text-2xl text-neutral-300 leading-relaxed max-w-3xl mx-auto mb-12">
+            Studio arsitektur dan kontraktor premium
+            dengan desain modern luxury dan pengerjaan profesional.
+          </p>
 
-              <h2 className="text-6xl md:text-8xl font-black leading-[1.05] mb-10">
+          <div className="flex justify-center gap-5 flex-wrap">
 
-                Mewujudkan
-                <br />
-                Arsitektur Mewah
-                <br />
-                Dengan Sentuhan
-                <br />
-                Modern
+            <a
+              href="#portfolio"
+              className="bg-white text-black px-10 py-5 rounded-2xl font-bold hover:scale-105 transition duration-300"
+            >
+              Lihat Portfolio
+            </a>
 
-              </h2>
-
-              <p className="text-xl md:text-2xl text-neutral-200 leading-relaxed max-w-3xl mb-12">
-
-                Jasa arsitektur dan kontraktor premium
-                dengan pengalaman lebih dari 15 tahun
-                dalam menangani proyek hunian modern,
-                villa eksklusif, interior mewah,
-                cafe aesthetic hingga proyek komersial.
-
-              </p>
-
-              <div className="flex flex-wrap gap-5">
-
-                <a
-                  href="#portfolio"
-                  className="bg-white text-black px-10 py-5 rounded-2xl font-bold text-lg hover:scale-105 transition duration-300"
-                >
-                  Lihat Portfolio
-                </a>
-
-                <a
-                  href="https://wa.me/6282188357297"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border border-white/20 bg-white/10 backdrop-blur-md px-10 py-5 rounded-2xl text-lg hover:bg-white hover:text-black transition duration-300"
-                >
-                  Konsultasi Gratis
-                </a>
-
-              </div>
-
-            </div>
+            <a
+              href="https://wa.me/6282188357297"
+              target="_blank"
+              className="border border-white/20 bg-white/10 backdrop-blur-md px-10 py-5 rounded-2xl hover:bg-white hover:text-black transition duration-300"
+            >
+              Konsultasi Gratis
+            </a>
 
           </div>
 
@@ -156,7 +152,7 @@ export default function Home() {
           <img
             src="/projects/about.jpg"
             alt="About"
-            className="rounded-[2rem] w-full h-[700px] object-cover"
+            className="w-full h-[700px] object-cover rounded-[2rem]"
           />
 
           <div>
@@ -166,22 +162,14 @@ export default function Home() {
             </p>
 
             <h3 className="text-5xl md:text-7xl font-black leading-tight mb-10">
-              Desain Modern Dengan Konstruksi Premium
+              Desain Modern Dengan Sentuhan Elegan
             </h3>
 
             <p className="text-xl text-neutral-300 leading-relaxed">
-
-              Kolaborasi adalah studio arsitektur dan kontraktor premium
-              dengan pengalaman lebih dari 15 tahun dalam menangani
-              berbagai proyek hunian modern, villa eksklusif,
-              cafe aesthetic, interior mewah, hingga proyek komersial.
-
-              <br /><br />
-
-              Kami menghadirkan desain yang elegan,
-              detail konstruksi berkualitas tinggi,
-              serta pengerjaan profesional dengan standar modern luxury.
-
+              Kolaborasi adalah studio arsitektur modern
+              yang fokus pada desain premium,
+              interior luxury, visualisasi 3D,
+              dan pembangunan profesional.
             </p>
 
           </div>
@@ -202,15 +190,13 @@ export default function Home() {
             Layanan Kami
           </h3>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
             {[
-              "Architecture Design",
-              "Interior Design",
-              "3D Visualization",
+              "Architecture",
+              "Interior",
+              "3D Visual",
               "Contractor",
-              "Renovation",
-              "Custom Furniture",
             ].map((service, index) => (
 
               <div
@@ -227,50 +213,7 @@ export default function Home() {
                 </h4>
 
                 <p className="text-neutral-400 leading-relaxed">
-                  Pengerjaan profesional dengan desain modern luxury premium.
-                </p>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* PRICING */}
-      <section
-        id="pricing"
-        className="px-8 py-32 bg-black"
-      >
-
-        <div className="max-w-7xl mx-auto text-center">
-
-          <h3 className="text-5xl md:text-7xl font-black mb-20">
-            Estimasi Harga
-          </h3>
-
-          <div className="grid md:grid-cols-3 gap-8">
-
-            {[
-              ["Desain Arsitektur", "Mulai 50rb/m²"],
-              ["Interior Design", "Mulai 150rb/m²"],
-              ["Jasa Kontraktor", "Mulai 4jt/m²"],
-            ].map(([title, price], index) => (
-
-              <div
-                key={index}
-                className="bg-neutral-900 rounded-[2rem] p-12 border border-white/10"
-              >
-
-                <h4 className="text-3xl font-semibold mb-8">
-                  {title}
-                </h4>
-
-                <p className="text-5xl font-black">
-                  {price}
+                  Desain premium dengan pengerjaan profesional.
                 </p>
 
               </div>
@@ -286,74 +229,67 @@ export default function Home() {
       {/* PORTFOLIO */}
       <section
         id="portfolio"
-        className="px-8 py-32 bg-neutral-950"
+        className="px-8 py-32 bg-black"
       >
 
         <div className="max-w-7xl mx-auto">
 
           <h3 className="text-5xl md:text-7xl font-black text-center mb-24">
-            Gallery Proyek Kolaborasi
+            Gallery Proyek
           </h3>
 
-          {/* EXTERIOR */}
-          <div className="mb-28">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-            <h4 className="text-4xl font-bold mb-12">
-              Eksterior
-            </h4>
+            {projects.map((project, index) => (
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div
+                key={index}
+                onClick={() => {
+                  setSelectedProject(project);
+                  setCurrentImage(0);
+                }}
+                className="relative overflow-hidden rounded-[2rem] cursor-pointer group"
+              >
 
-              {exteriorImages.map((image, index) => (
+                {/* IMAGE */}
+                <img
+                  src={project.images[0]}
+                  alt={project.name}
+                  className="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
+                />
 
-                <div
-                  key={index}
-                  onClick={() => setSelectedImage(image)}
-                  className="group overflow-hidden rounded-[2rem] cursor-pointer"
-                >
+                {/* OVERLAY */}
+                <div className="absolute inset-0 bg-black/40" />
 
-                  <img
-                    src={image}
-                    alt="Exterior"
-                    className="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
-                  />
+                {/* INFO */}
+                <div className="absolute bottom-0 left-0 p-6 z-10">
 
-                </div>
+                  <h4 className="text-2xl font-bold">
+                    {project.name}
+                  </h4>
 
-              ))}
+                  <p className="text-sm text-neutral-300 mt-2">
+                    {project.client}
+                  </p>
 
-            </div>
-
-          </div>
-
-          {/* INTERIOR */}
-          <div>
-
-            <h4 className="text-4xl font-bold mb-12">
-              Interior
-            </h4>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-              {interiorImages.map((image, index) => (
-
-                <div
-                  key={index}
-                  onClick={() => setSelectedImage(image)}
-                  className="group overflow-hidden rounded-[2rem] cursor-pointer"
-                >
-
-                  <img
-                    src={image}
-                    alt="Interior"
-                    className="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
-                  />
+                  <p className="text-sm text-neutral-400">
+                    {project.location}
+                  </p>
 
                 </div>
 
-              ))}
+                {/* ARROW */}
+                <div className="absolute top-5 right-5 z-10">
 
-            </div>
+                  <div className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-2xl group-hover:scale-110 transition duration-300">
+                    →
+                  </div>
+
+                </div>
+
+              </div>
+
+            ))}
 
           </div>
 
@@ -361,161 +297,143 @@ export default function Home() {
 
       </section>
 
+      {/* CONTACT */}
+      <section
+        id="contact"
+        className="px-8 py-32 bg-neutral-950"
+      >
+
+        <div className="max-w-5xl mx-auto text-center">
+
+          <h3 className="text-5xl md:text-7xl font-black mb-10">
+            Hubungi Kami
+          </h3>
+
+          <p className="text-xl text-neutral-400 mb-12">
+            Konsultasikan proyek impian Anda bersama tim Kolaborasi.
+          </p>
+
+          <a
+            href="https://wa.me/6282188357297"
+            target="_blank"
+            className="inline-block bg-white text-black px-10 py-5 rounded-2xl font-bold hover:scale-105 transition duration-300"
+          >
+            WhatsApp Sekarang
+          </a>
+
+        </div>
+
+      </section>
+
       {/* FOOTER */}
-      <footer className="bg-black border-t border-white/10 px-8 py-24">
-
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-20">
-
-          {/* MENU */}
-          <div>
-
-            <h4 className="text-4xl font-bold mb-10">
-              MENU
-            </h4>
-
-            <div className="flex flex-col gap-5 text-neutral-300 text-lg">
-
-              <a href="#about">Tentang Kami</a>
-              <a href="#portfolio">Portfolio</a>
-              <a href="#pricing">Estimasi Harga</a>
-              <a href="#services">Layanan Kami</a>
-
-            </div>
-
-          </div>
-
-          {/* CONTACT */}
-          <div>
-
-            <h4 className="text-4xl font-bold mb-10">
-              HUBUNGI KAMI
-            </h4>
-
-            <div className="flex flex-col gap-5 text-neutral-300 text-lg">
-
-              <p>
-                💬 WhatsApp:
-                <br />
-
-                <a
-                  href="https://wa.me/6282188357297"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-green-400 transition"
-                >
-                  +62 821-8835-7297
-                </a>
-
-              </p>
-
-              <p>
-                ✉ Email:
-                <br />
-                info@kolaborasiarchitect.com
-              </p>
-
-              <p>
-                📍 Bandung, Indonesia
-              </p>
-
-            </div>
-
-          </div>
-
-          {/* SOCIAL */}
-          <div>
-
-            <h4 className="text-4xl font-bold mb-10">
-              IKUTI KAMI
-            </h4>
-
-            <div className="flex gap-6">
-
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:scale-110 transition duration-300"
-              >
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
-                  alt="Facebook"
-                  className="w-10 h-10"
-                />
-              </a>
-
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:scale-110 transition duration-300"
-              >
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
-                  alt="Instagram"
-                  className="w-10 h-10"
-                />
-              </a>
-
-              <a
-                href="https://tiktok.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:scale-110 transition duration-300"
-              >
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"
-                  alt="TikTok"
-                  className="w-10 h-10"
-                />
-              </a>
-
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:scale-110 transition duration-300"
-              >
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
-                  alt="YouTube"
-                  className="w-10 h-10"
-                />
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <div className="border-t border-white/10 mt-20 pt-10 text-center text-neutral-500">
-
-          © 2026 Kolaborasi Architecture & Contractor.
-          All Rights Reserved.
-
-        </div>
-
+      <footer className="border-t border-white/10 py-10 text-center text-neutral-500 bg-black">
+        © 2026 Kolaborasi Architecture & Contractor
       </footer>
 
-      {/* FULLSCREEN IMAGE */}
-      {selectedImage && (
+      {/* MODAL */}
+      {selectedProject && (
 
-        <div
-          onClick={() => setSelectedImage(null)}
-          className="fixed inset-0 z-[999] bg-black/95 backdrop-blur-md flex items-center justify-center p-6 animate-fade cursor-pointer"
-        >
+        <div className="fixed inset-0 z-[999] bg-black/95 flex flex-col items-center justify-center p-6">
 
-          <img
-            src={selectedImage}
-            alt="Preview"
-            className="max-w-full max-h-full object-contain rounded-[2rem] shadow-2xl animate-zoom"
-          />
+          {/* CLOSE */}
+          <button
+            onClick={() => setSelectedProject(null)}
+            className="absolute top-6 right-8 text-white text-5xl z-50"
+          >
+            ×
+          </button>
+
+          {/* IMAGE */}
+          <div className="relative w-full max-w-6xl">
+
+            <img
+              src={selectedProject.images[currentImage]}
+              alt={selectedProject.name}
+              className="w-full max-h-[80vh] object-contain rounded-[2rem]"
+            />
+
+            {/* PREV */}
+            <button
+              onClick={() =>
+                setCurrentImage(
+                  currentImage === 0
+                    ? selectedProject.images.length - 1
+                    : currentImage - 1
+                )
+              }
+              className="absolute left-5 top-1/2 -translate-y-1/2 z-50"
+            >
+
+              <div className="w-14 h-14 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-3xl hover:scale-110 transition duration-300">
+                ←
+              </div>
+
+            </button>
+
+            {/* NEXT */}
+            <button
+              onClick={() =>
+                setCurrentImage(
+                  currentImage === selectedProject.images.length - 1
+                    ? 0
+                    : currentImage + 1
+                )
+              }
+              className="absolute right-5 top-1/2 -translate-y-1/2 z-50"
+            >
+
+              <div className="w-14 h-14 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-3xl hover:scale-110 transition duration-300">
+                →
+              </div>
+
+            </button>
+
+          </div>
+
+          {/* INFO */}
+          <div className="text-center mt-10">
+
+            <h3 className="text-4xl font-black">
+              {selectedProject.name}
+            </h3>
+
+            <p className="text-xl text-neutral-300 mt-3">
+              {selectedProject.client}
+            </p>
+
+            <p className="text-neutral-500 mt-2">
+              {selectedProject.location}
+            </p>
+
+          </div>
+
+          {/* THUMBNAILS */}
+          <div className="flex gap-4 mt-8 overflow-x-auto max-w-full pb-2">
+
+            {selectedProject.images.map((image: string, index: number) => (
+
+              <img
+                key={index}
+                src={image}
+                alt=""
+                onClick={() => setCurrentImage(index)}
+                className={`w-28 h-20 object-cover rounded-xl cursor-pointer border-2 transition duration-300 ${
+                  currentImage === index
+                    ? "border-white scale-105"
+                    : "border-transparent opacity-60 hover:opacity-100"
+                }`}
+              />
+
+            ))}
+
+          </div>
 
         </div>
 
       )}
 
     </main>
+
   );
 }
+```
