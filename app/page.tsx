@@ -341,16 +341,7 @@ export default function Home() {
 
             </div>
 
-            {/* ICON */}
-            <div className="absolute top-5 right-5 z-10">
-
-              <div className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-2xl">
-
-                →
-
-              </div>
-
-            </div>
+           
 
           </div>
 
@@ -404,16 +395,7 @@ export default function Home() {
 
             </div>
 
-            {/* ICON */}
-            <div className="absolute top-5 right-5 z-10">
-
-              <div className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-2xl">
-
-                →
-
-              </div>
-
-            </div>
+            
 
           </div>
 
