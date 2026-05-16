@@ -1,65 +1,29 @@
-```tsx
 "use client";
 
 import { useState } from "react";
 
 export default function Home() {
 
-  const [selectedProject, setSelectedProject] = useState<any | null>(null);
-  const [currentImage, setCurrentImage] = useState(0);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const slides = [
     "/projects/slide1.jpg",
     "/projects/slide2.jpg",
     "/projects/slide3.jpg",
     "/projects/slide4.jpg",
+    "/projects/slide5.jpg",
+    "/projects/slide6.jpg",
   ];
 
-  const projects = [
-    {
-      name: "Villa Modern Tropis",
-      location: "Bandung, Jawa Barat",
-      category: "Exterior",
-      images: [
-        "/projects/exterior1.jpg",
-        "/projects/exterior2.jpg",
-        "/projects/exterior3.jpg",
-      ],
-    },
+  const exteriorImages = Array.from(
+    { length: 20 },
+    (_, i) => `/projects/exterior${i + 1}.jpg`
+  );
 
-    {
-      name: "Rumah Luxury Minimalis",
-      location: "Jakarta Selatan",
-      category: "Exterior",
-      images: [
-        "/projects/exterior4.jpg",
-        "/projects/exterior5.jpg",
-        "/projects/exterior6.jpg",
-      ],
-    },
-
-    {
-      name: "Interior Cafe Aesthetic",
-      location: "Bandung",
-      category: "Interior",
-      images: [
-        "/projects/interior1.jpg",
-        "/projects/interior2.jpg",
-        "/projects/interior3.jpg",
-      ],
-    },
-
-    {
-      name: "Luxury Bedroom Design",
-      location: "Surabaya",
-      category: "Interior",
-      images: [
-        "/projects/interior4.jpg",
-        "/projects/interior5.jpg",
-        "/projects/interior6.jpg",
-      ],
-    },
-  ];
+  const interiorImages = Array.from(
+    { length: 20 },
+    (_, i) => `/projects/interior${i + 1}.jpg`
+  );
 
   return (
 
@@ -87,7 +51,6 @@ export default function Home() {
             <a href="#about">Tentang Kami</a>
             <a href="#services">Layanan Kami</a>
             <a href="#pricing">Estimasi Harga</a>
-            <a href="#portfolio">Portfolio</a>
 
           </nav>
 
@@ -98,14 +61,29 @@ export default function Home() {
       {/* HERO */}
       <section className="relative h-screen overflow-hidden">
 
-        {/* BACKGROUND */}
+        {/* SLIDESHOW */}
         <div className="absolute inset-0 overflow-hidden">
 
-          <img
-            src={slides[0]}
-            alt="Hero"
-            className="w-full h-full object-cover"
-          />
+          <div className="slider-track">
+
+            {slides.map((slide, index) => (
+
+              <div
+                key={index}
+                className="slide-item"
+              >
+
+                <img
+                  src={slide}
+                  alt={`Slide ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+
+              </div>
+
+            ))}
+
+          </div>
 
         </div>
 
@@ -199,6 +177,12 @@ export default function Home() {
               dengan pengalaman lebih dari 15 tahun dalam menangani
               berbagai proyek hunian modern, villa eksklusif,
               cafe aesthetic, interior mewah, hingga proyek komersial.
+
+              <br /><br />
+
+              Kami menghadirkan desain yang elegan,
+              detail konstruksi berkualitas tinggi,
+              serta pengerjaan profesional dengan standar modern luxury.
 
             </p>
 
@@ -313,40 +297,65 @@ export default function Home() {
             Gallery Proyek Kolaborasi
           </h3>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* EXTERIOR */}
+          <div className="mb-28">
 
-            {projects.map((project, index) => (
+            <h4 className="text-4xl font-bold mb-12">
+              Eksterior
+            </h4>
 
-              <div
-                key={index}
-                onClick={() => {
-                  setSelectedProject(project);
-                  setCurrentImage(0);
-                }}
-                className="group overflow-hidden rounded-[2rem] cursor-pointer relative"
-              >
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-                <img
-                  src={project.images[0]}
-                  alt={project.name}
-                  className="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
-                />
+              {exteriorImages.map((image, index) => (
 
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-6">
+                <div
+                  key={index}
+                  onClick={() => setSelectedImage(image)}
+                  className="group overflow-hidden rounded-[2rem] cursor-pointer"
+                >
 
-                  <h4 className="text-2xl font-bold">
-                    {project.name}
-                  </h4>
-
-                  <p className="text-sm text-neutral-300 mt-2">
-                    {project.location}
-                  </p>
+                  <img
+                    src={image}
+                    alt="Exterior"
+                    className="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
+                  />
 
                 </div>
 
-              </div>
+              ))}
 
-            ))}
+            </div>
+
+          </div>
+
+          {/* INTERIOR */}
+          <div>
+
+            <h4 className="text-4xl font-bold mb-12">
+              Interior
+            </h4>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+              {interiorImages.map((image, index) => (
+
+                <div
+                  key={index}
+                  onClick={() => setSelectedImage(image)}
+                  className="group overflow-hidden rounded-[2rem] cursor-pointer"
+                >
+
+                  <img
+                    src={image}
+                    alt="Interior"
+                    className="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
+                  />
+
+                </div>
+
+              ))}
+
+            </div>
 
           </div>
 
@@ -357,7 +366,132 @@ export default function Home() {
       {/* FOOTER */}
       <footer className="bg-black border-t border-white/10 px-8 py-24">
 
-        <div className="max-w-7xl mx-auto text-center text-neutral-400">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-20">
+
+          {/* MENU */}
+          <div>
+
+            <h4 className="text-4xl font-bold mb-10">
+              MENU
+            </h4>
+
+            <div className="flex flex-col gap-5 text-neutral-300 text-lg">
+
+              <a href="#about">Tentang Kami</a>
+              <a href="#portfolio">Portfolio</a>
+              <a href="#pricing">Estimasi Harga</a>
+              <a href="#services">Layanan Kami</a>
+
+            </div>
+
+          </div>
+
+          {/* CONTACT */}
+          <div>
+
+            <h4 className="text-4xl font-bold mb-10">
+              HUBUNGI KAMI
+            </h4>
+
+            <div className="flex flex-col gap-5 text-neutral-300 text-lg">
+
+              <p>
+                💬 WhatsApp:
+                <br />
+
+                <a
+                  href="https://wa.me/6282188357297"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-green-400 transition"
+                >
+                  +62 821-8835-7297
+                </a>
+
+              </p>
+
+              <p>
+                ✉ Email:
+                <br />
+                info@kolaborasiarchitect.com
+              </p>
+
+              <p>
+                📍 Bandung, Indonesia
+              </p>
+
+            </div>
+
+          </div>
+
+          {/* SOCIAL */}
+          <div>
+
+            <h4 className="text-4xl font-bold mb-10">
+              IKUTI KAMI
+            </h4>
+
+            <div className="flex gap-6">
+
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition duration-300"
+              >
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
+                  alt="Facebook"
+                  className="w-10 h-10"
+                />
+              </a>
+
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition duration-300"
+              >
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
+                  alt="Instagram"
+                  className="w-10 h-10"
+                />
+              </a>
+
+              <a
+                href="https://tiktok.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition duration-300"
+              >
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"
+                  alt="TikTok"
+                  className="w-10 h-10"
+                />
+              </a>
+
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition duration-300"
+              >
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
+                  alt="YouTube"
+                  className="w-10 h-10"
+                />
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div className="border-t border-white/10 mt-20 pt-10 text-center text-neutral-500">
 
           © 2026 Kolaborasi Architecture & Contractor.
           All Rights Reserved.
@@ -366,74 +500,19 @@ export default function Home() {
 
       </footer>
 
-      {/* PROJECT MODAL */}
-      {selectedProject && (
+      {/* FULLSCREEN IMAGE */}
+      {selectedImage && (
 
-        <div className="fixed inset-0 z-[999] bg-black/95 flex flex-col items-center justify-center p-6">
+        <div
+          onClick={() => setSelectedImage(null)}
+          className="fixed inset-0 z-[999] bg-black/95 backdrop-blur-md flex items-center justify-center p-6 animate-fade cursor-pointer"
+        >
 
-          {/* CLOSE */}
-          <button
-            onClick={() => setSelectedProject(null)}
-            className="absolute top-6 right-8 text-white text-5xl"
-          >
-            ×
-          </button>
-
-          {/* IMAGE */}
-          <div className="relative w-full max-w-6xl">
-
-            <img
-              src={selectedProject.images[currentImage]}
-              alt={selectedProject.name}
-              className="w-full max-h-[80vh] object-contain rounded-[2rem]"
-            />
-
-            {/* PREV */}
-            <button
-              onClick={() =>
-                setCurrentImage((prev) =>
-                  prev === 0
-                    ? selectedProject.images.length - 1
-                    : prev - 1
-                )
-              }
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 backdrop-blur-md px-5 py-3 rounded-full text-3xl"
-            >
-              ←
-            </button>
-
-            {/* NEXT */}
-            <button
-              onClick={() =>
-                setCurrentImage((prev) =>
-                  prev === selectedProject.images.length - 1
-                    ? 0
-                    : prev + 1
-                )
-              }
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 backdrop-blur-md px-5 py-3 rounded-full text-3xl"
-            >
-              →
-            </button>
-
-          </div>
-
-          {/* INFO */}
-          <div className="text-center mt-10">
-
-            <h3 className="text-4xl font-black mb-3">
-              {selectedProject.name}
-            </h3>
-
-            <p className="text-neutral-400 text-lg">
-              {selectedProject.location}
-            </p>
-
-            <p className="mt-3 text-neutral-500 uppercase tracking-[0.2em] text-sm">
-              {selectedProject.category}
-            </p>
-
-          </div>
+          <img
+            src={selectedImage}
+            alt="Preview"
+            className="max-w-full max-h-full object-contain rounded-[2rem] shadow-2xl animate-zoom"
+          />
 
         </div>
 
@@ -443,4 +522,3 @@ export default function Home() {
 
   );
 }
-```
