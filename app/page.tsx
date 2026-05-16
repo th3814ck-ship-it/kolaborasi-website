@@ -286,83 +286,146 @@ export default function Home() {
       </section>
 
       {/* PORTFOLIO */}
-      <section
-        id="portfolio"
-        className="px-8 py-32 bg-neutral-950"
-      >
+<section
+  id="portfolio"
+  className="px-8 py-32 bg-neutral-950"
+>
 
-        <div className="max-w-7xl mx-auto">
+  <div className="max-w-7xl mx-auto">
 
-          <h3 className="text-5xl md:text-7xl font-black text-center mb-24">
-            Gallery Proyek Kolaborasi
-          </h3>
+    <h3 className="text-5xl md:text-7xl font-black text-center mb-24">
+      Gallery Proyek Kolaborasi
+    </h3>
 
-          {/* EXTERIOR */}
-          <div className="mb-28">
+    {/* EXTERIOR */}
+    <div className="mb-28">
 
-            <h4 className="text-4xl font-bold mb-12">
-              Eksterior
-            </h4>
+      <h4 className="text-4xl font-bold mb-12">
+        Eksterior
+      </h4>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-              {exteriorImages.map((image, index) => (
+        {exteriorImages.map((image, index) => (
 
-                <div
-                  key={index}
-                  onClick={() => setSelectedImage(image)}
-                  className="group overflow-hidden rounded-[2rem] cursor-pointer"
-                >
+          <div
+            key={index}
+            onClick={() => setSelectedImage(image)}
+            className="group overflow-hidden rounded-[2rem] cursor-pointer relative"
+          >
 
-                  <img
-                    src={image}
-                    alt="Exterior"
-                    className="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
-                  />
+            {/* IMAGE */}
+            <img
+              src={image}
+              alt="Exterior"
+              className="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
+            />
 
-                </div>
+            {/* OVERLAY */}
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition duration-500" />
 
-              ))}
+            {/* INFO */}
+            <div className="absolute bottom-0 left-0 p-6 z-10">
+
+              <h4 className="text-2xl font-bold">
+                Villa Modern Luxury
+              </h4>
+
+              <p className="text-sm text-neutral-300 mt-2">
+                Client: Bapak Andi Wijaya
+              </p>
+
+              <p className="text-sm text-neutral-400">
+                Bandung, Jawa Barat
+              </p>
+
+            </div>
+
+            {/* ICON */}
+            <div className="absolute top-5 right-5 z-10">
+
+              <div className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-2xl">
+
+                →
+
+              </div>
 
             </div>
 
           </div>
 
-          {/* INTERIOR */}
-          <div>
+        ))}
 
-            <h4 className="text-4xl font-bold mb-12">
-              Interior
-            </h4>
+      </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+    </div>
 
-              {interiorImages.map((image, index) => (
+    {/* INTERIOR */}
+    <div>
 
-                <div
-                  key={index}
-                  onClick={() => setSelectedImage(image)}
-                  className="group overflow-hidden rounded-[2rem] cursor-pointer"
-                >
+      <h4 className="text-4xl font-bold mb-12">
+        Interior
+      </h4>
 
-                  <img
-                    src={image}
-                    alt="Interior"
-                    className="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
-                  />
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-                </div>
+        {interiorImages.map((image, index) => (
 
-              ))}
+          <div
+            key={index}
+            onClick={() => setSelectedImage(image)}
+            className="group overflow-hidden rounded-[2rem] cursor-pointer relative"
+          >
+
+            {/* IMAGE */}
+            <img
+              src={image}
+              alt="Interior"
+              className="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
+            />
+
+            {/* OVERLAY */}
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition duration-500" />
+
+            {/* INFO */}
+            <div className="absolute bottom-0 left-0 p-6 z-10">
+
+              <h4 className="text-2xl font-bold">
+                Luxury Interior Design
+              </h4>
+
+              <p className="text-sm text-neutral-300 mt-2">
+                Client: Cafe Ruang Senja
+              </p>
+
+              <p className="text-sm text-neutral-400">
+                Jakarta Selatan
+              </p>
+
+            </div>
+
+            {/* ICON */}
+            <div className="absolute top-5 right-5 z-10">
+
+              <div className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-2xl">
+
+                →
+
+              </div>
 
             </div>
 
           </div>
 
-        </div>
+        ))}
 
-      </section>
+      </div>
 
+    </div>
+
+  </div>
+
+</section>
       {/* FOOTER */}
       <footer className="bg-black border-t border-white/10 px-8 py-24">
 
@@ -501,24 +564,37 @@ export default function Home() {
       </footer>
 
       {/* FULLSCREEN IMAGE */}
-      {selectedImage && (
+{selectedImage && (
 
-        <div
-          onClick={() => setSelectedImage(null)}
-          className="fixed inset-0 z-[999] bg-black/95 backdrop-blur-md flex items-center justify-center p-6 animate-fade cursor-pointer"
-        >
+  <div
+    onClick={() => setSelectedImage(null)}
+    className="fixed inset-0 z-[999] bg-black/95 backdrop-blur-md flex flex-col items-center justify-center p-6"
+  >
 
-          <img
-            src={selectedImage}
-            alt="Preview"
-            className="max-w-full max-h-full object-contain rounded-[2rem] shadow-2xl animate-zoom"
-          />
+    {/* IMAGE */}
+    <img
+      src={selectedImage}
+      alt="Preview"
+      className="max-w-full max-h-[75vh] object-contain rounded-[2rem] shadow-2xl"
+    />
 
-        </div>
+    {/* INFO */}
+    <div className="mt-8 text-center">
 
-      )}
+      <h3 className="text-4xl font-black">
+        Villa Modern Luxury
+      </h3>
 
-    </main>
+      <p className="text-xl text-neutral-300 mt-3">
+        Client: Bapak Andi Wijaya
+      </p>
 
-  );
-}
+      <p className="text-neutral-500 mt-2">
+        Bandung, Jawa Barat
+      </p>
+
+    </div>
+
+  </div>
+
+)}
