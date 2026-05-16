@@ -548,38 +548,104 @@ export default function Home() {
       {/* FULLSCREEN IMAGE */}
 {selectedImage && (
 
-  <div
-    onClick={() => setSelectedImage(null)}
-    className="fixed inset-0 z-[999] bg-black/95 backdrop-blur-md flex flex-col items-center justify-center p-6"
-  >
+  <div className="fixed inset-0 z-[999] bg-black/95 flex flex-col">
 
-    {/* IMAGE */}
-    <img
-      src={selectedImage}
-      alt="Preview"
-      className="max-w-full max-h-[75vh] object-contain rounded-[2rem] shadow-2xl"
-    />
+    {/* CLOSE */}
+    <button
+      onClick={() => setSelectedImage(null)}
+      className="absolute top-6 right-8 z-50 text-white text-5xl"
+    >
+      ×
+    </button>
+
+    {/* MAIN IMAGE */}
+    <div className="flex-1 flex items-center justify-center px-10 pt-20 pb-6">
+
+      <img
+        src={selectedImage}
+        alt="Preview"
+        className="max-h-[75vh] object-contain rounded-2xl"
+      />
+
+    </div>
+
+    {/* THUMBNAILS */}
+    <div className="px-10 overflow-x-auto">
+
+      <div className="flex gap-4 pb-6">
+
+        {[
+          selectedImage,
+          selectedImage,
+          selectedImage,
+          selectedImage,
+          selectedImage,
+        ].map((img, index) => (
+
+          <img
+            key={index}
+            src={img}
+            alt="Thumb"
+            className="w-32 h-24 object-cover rounded-xl cursor-pointer border border-white/20 hover:opacity-80 transition"
+          />
+
+        ))}
+
+      </div>
+
+    </div>
 
     {/* INFO */}
-    <div className="mt-8 text-center">
+    <div className="bg-white text-black px-10 py-8">
 
-      <h3 className="text-4xl font-black">
-        Villa Modern Luxury
-      </h3>
+      <div className="max-w-7xl mx-auto">
 
-      <p className="text-xl text-neutral-300 mt-3">
-        Client: Bapak Andi Wijaya
-      </p>
+        <div className="flex flex-wrap items-center gap-4 mb-4">
 
-      <p className="text-neutral-500 mt-2">
-        Bandung, Jawa Barat
-      </p>
+          <span className="bg-neutral-200 px-4 py-1 rounded-full text-sm font-medium">
+            Large House
+          </span>
+
+        </div>
+
+        <h2 className="text-4xl font-black mb-4">
+
+          Desain Rumah Modern 3 Lantai
+
+        </h2>
+
+        <div className="space-y-2 text-neutral-700 text-lg">
+
+          <p>
+            <span className="font-semibold">
+              Client:
+            </span>{" "}
+            Bapak Andi Wijaya
+          </p>
+
+          <p>
+            <span className="font-semibold">
+              Lokasi:
+            </span>{" "}
+            Bandung, Jawa Barat
+          </p>
+
+          <p>
+            <span className="font-semibold">
+              Kategori:
+            </span>{" "}
+            Modern Luxury House
+          </p>
+
+        </div>
+
+      </div>
 
     </div>
 
   </div>
 
-       )}
+      )}
 
     </main>
   );
