@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function Home() {
 
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<any>(null);
 
   const slides = [
     "/projects/slide1.jpg",
@@ -15,15 +15,73 @@ export default function Home() {
     "/projects/slide6.jpg",
   ];
 
-  const exteriorImages = Array.from(
-    { length: 20 },
-    (_, i) => `/projects/exterior${i + 1}.jpg`
-  );
+  const exteriorImages = [
+    {
+      image: "/projects/exterior1.jpg",
+      title: "Villa Modern Luxury",
+      client: "Bapak Andi Wijaya",
+      location: "Bandung, Jawa Barat",
+      category: "Modern Luxury House",
+    },
 
-  const interiorImages = Array.from(
-    { length: 20 },
-    (_, i) => `/projects/interior${i + 1}.jpg`
-  );
+    {
+      image: "/projects/exterior2.jpg",
+      title: "Rumah Tropical Modern",
+      client: "Ibu Clara",
+      location: "Jakarta Selatan",
+      category: "Tropical Modern",
+    },
+
+    {
+      image: "/projects/exterior3.jpg",
+      title: "Hotel Premium",
+      client: "PT Graha Nusantara",
+      location: "Surabaya",
+      category: "Commercial Building",
+    },
+
+    {
+      image: "/projects/exterior4.jpg",
+      title: "Apartment Modern",
+      client: "PT Skyline",
+      location: "Bandung",
+      category: "Apartment",
+    },
+  ];
+
+  const interiorImages = [
+    {
+      image: "/projects/interior1.jpg",
+      title: "Interior Cafe Luxury",
+      client: "Cafe Botanica",
+      location: "Bandung",
+      category: "Cafe Interior",
+    },
+
+    {
+      image: "/projects/interior2.jpg",
+      title: "Modern Kitchen",
+      client: "Bapak Daniel",
+      location: "Jakarta",
+      category: "Kitchen Interior",
+    },
+
+    {
+      image: "/projects/interior3.jpg",
+      title: "Luxury Bedroom",
+      client: "Ibu Siska",
+      location: "Bali",
+      category: "Bedroom Interior",
+    },
+
+    {
+      image: "/projects/interior4.jpg",
+      title: "Cafe Industrial",
+      client: "Kopi Urban",
+      location: "Bandung",
+      category: "Cafe Interior",
+    },
+  ];
 
   return (
 
@@ -192,49 +250,113 @@ export default function Home() {
 
       </section>
 
-      {/* SERVICES */}
+      {/* PORTFOLIO */}
       <section
-        id="services"
+        id="portfolio"
         className="px-8 py-32 bg-neutral-950"
       >
 
-        <div className="max-w-7xl mx-auto text-center">
+        <div className="max-w-7xl mx-auto">
 
-          <h3 className="text-5xl md:text-7xl font-black mb-20">
-            Layanan Kami
+          <h3 className="text-5xl md:text-7xl font-black text-center mb-24">
+            Gallery Proyek Kolaborasi
           </h3>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* EXTERIOR */}
+          <div className="mb-28">
 
-            {[
-              "Architecture Design",
-              "Interior Design",
-              "3D Visualization",
-              "Contractor",
-              "Renovation",
-              "Custom Furniture",
-            ].map((service, index) => (
+            <h4 className="text-4xl font-bold mb-12">
+              Eksterior
+            </h4>
 
-              <div
-                key={index}
-                className="bg-black border border-white/10 rounded-[2rem] p-10 hover:-translate-y-2 transition duration-500"
-              >
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-                <div className="text-5xl mb-6">
-                  ✨
+              {exteriorImages.map((item, index) => (
+
+                <div
+                  key={index}
+                  onClick={() => setSelectedImage(item)}
+                  className="group overflow-hidden rounded-[2rem] cursor-pointer relative"
+                >
+
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
+                  />
+
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition duration-500" />
+
+                  <div className="absolute bottom-0 left-0 p-6 z-10">
+
+                    <h4 className="text-2xl font-bold">
+                      {item.title}
+                    </h4>
+
+                    <p className="text-sm text-neutral-300 mt-2">
+                      Client: {item.client}
+                    </p>
+
+                    <p className="text-sm text-neutral-400">
+                      {item.location}
+                    </p>
+
+                  </div>
+
                 </div>
 
-                <h4 className="text-3xl font-semibold mb-4">
-                  {service}
-                </h4>
+              ))}
 
-                <p className="text-neutral-400 leading-relaxed">
-                  Pengerjaan profesional dengan desain modern luxury premium.
-                </p>
+            </div>
 
-              </div>
+          </div>
 
-            ))}
+          {/* INTERIOR */}
+          <div>
+
+            <h4 className="text-4xl font-bold mb-12">
+              Interior
+            </h4>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+              {interiorImages.map((item, index) => (
+
+                <div
+                  key={index}
+                  onClick={() => setSelectedImage(item)}
+                  className="group overflow-hidden rounded-[2rem] cursor-pointer relative"
+                >
+
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
+                  />
+
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition duration-500" />
+
+                  <div className="absolute bottom-0 left-0 p-6 z-10">
+
+                    <h4 className="text-2xl font-bold">
+                      {item.title}
+                    </h4>
+
+                    <p className="text-sm text-neutral-300 mt-2">
+                      Client: {item.client}
+                    </p>
+
+                    <p className="text-sm text-neutral-400">
+                      {item.location}
+                    </p>
+
+                  </div>
+
+                </div>
+
+              ))}
+
+            </div>
 
           </div>
 
@@ -242,178 +364,11 @@ export default function Home() {
 
       </section>
 
-      {/* PRICING */}
-      <section
-        id="pricing"
-        className="px-8 py-32 bg-black"
-      >
-
-        <div className="max-w-7xl mx-auto text-center">
-
-          <h3 className="text-5xl md:text-7xl font-black mb-20">
-            Estimasi Harga
-          </h3>
-
-          <div className="grid md:grid-cols-3 gap-8">
-
-            {[
-              ["Desain Arsitektur", "Mulai 50rb/m²"],
-              ["Interior Design", "Mulai 150rb/m²"],
-              ["Jasa Kontraktor", "Mulai 4jt/m²"],
-            ].map(([title, price], index) => (
-
-              <div
-                key={index}
-                className="bg-neutral-900 rounded-[2rem] p-12 border border-white/10"
-              >
-
-                <h4 className="text-3xl font-semibold mb-8">
-                  {title}
-                </h4>
-
-                <p className="text-5xl font-black">
-                  {price}
-                </p>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* PORTFOLIO */}
-<section
-  id="portfolio"
-  className="px-8 py-32 bg-neutral-950"
->
-
-  <div className="max-w-7xl mx-auto">
-
-    <h3 className="text-5xl md:text-7xl font-black text-center mb-24">
-      Gallery Proyek Kolaborasi
-    </h3>
-
-    {/* EXTERIOR */}
-    <div className="mb-28">
-
-      <h4 className="text-4xl font-bold mb-12">
-        Eksterior
-      </h4>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-        {exteriorImages.map((image, index) => (
-
-          <div
-            key={index}
-            onClick={() => setSelectedImage(image)}
-            className="group overflow-hidden rounded-[2rem] cursor-pointer relative"
-          >
-
-            {/* IMAGE */}
-            <img
-              src={image}
-              alt="Exterior"
-              className="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
-            />
-
-            {/* OVERLAY */}
-            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition duration-500" />
-
-            {/* INFO */}
-            <div className="absolute bottom-0 left-0 p-6 z-10">
-
-              <h4 className="text-2xl font-bold">
-                Villa Modern Luxury
-              </h4>
-
-              <p className="text-sm text-neutral-300 mt-2">
-                Client: Bapak Andi Wijaya
-              </p>
-
-              <p className="text-sm text-neutral-400">
-                Bandung, Jawa Barat
-              </p>
-
-            </div>
-
-           
-
-          </div>
-
-        ))}
-
-      </div>
-
-    </div>
-
-    {/* INTERIOR */}
-    <div>
-
-      <h4 className="text-4xl font-bold mb-12">
-        Interior
-      </h4>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-        {interiorImages.map((image, index) => (
-
-          <div
-            key={index}
-            onClick={() => setSelectedImage(image)}
-            className="group overflow-hidden rounded-[2rem] cursor-pointer relative"
-          >
-
-            {/* IMAGE */}
-            <img
-              src={image}
-              alt="Interior"
-              className="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
-            />
-
-            {/* OVERLAY */}
-            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition duration-500" />
-
-            {/* INFO */}
-            <div className="absolute bottom-0 left-0 p-6 z-10">
-
-              <h4 className="text-2xl font-bold">
-                Luxury Interior Design
-              </h4>
-
-              <p className="text-sm text-neutral-300 mt-2">
-                Client: Cafe Ruang Senja
-              </p>
-
-              <p className="text-sm text-neutral-400">
-                Jakarta Selatan
-              </p>
-
-            </div>
-
-            
-
-          </div>
-
-        ))}
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
       {/* FOOTER */}
       <footer className="bg-black border-t border-white/10 px-8 py-24">
 
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-20">
 
-          {/* MENU */}
           <div>
 
             <h4 className="text-4xl font-bold mb-10">
@@ -425,13 +380,11 @@ export default function Home() {
               <a href="#about">Tentang Kami</a>
               <a href="#portfolio">Portfolio</a>
               <a href="#pricing">Estimasi Harga</a>
-              <a href="#services">Layanan Kami</a>
 
             </div>
 
           </div>
 
-          {/* CONTACT */}
           <div>
 
             <h4 className="text-4xl font-bold mb-10">
@@ -461,15 +414,10 @@ export default function Home() {
                 info@kolaborasiarchitect.com
               </p>
 
-              <p>
-                📍 Bandung, Indonesia
-              </p>
-
             </div>
 
           </div>
 
-          {/* SOCIAL */}
           <div>
 
             <h4 className="text-4xl font-bold mb-10">
@@ -478,55 +426,31 @@ export default function Home() {
 
             <div className="flex gap-6">
 
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:scale-110 transition duration-300"
-              >
+              <a href="https://facebook.com" target="_blank">
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
-                  alt="Facebook"
-                  className="w-10 h-10"
+                  className="w-10 h-10 hover:scale-110 transition"
                 />
               </a>
 
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:scale-110 transition duration-300"
-              >
+              <a href="https://instagram.com" target="_blank">
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
-                  alt="Instagram"
-                  className="w-10 h-10"
+                  className="w-10 h-10 hover:scale-110 transition"
                 />
               </a>
 
-              <a
-                href="https://tiktok.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:scale-110 transition duration-300"
-              >
+              <a href="https://tiktok.com" target="_blank">
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"
-                  alt="TikTok"
-                  className="w-10 h-10"
+                  className="w-10 h-10 hover:scale-110 transition"
                 />
               </a>
 
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:scale-110 transition duration-300"
-              >
+              <a href="https://youtube.com" target="_blank">
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
-                  alt="YouTube"
-                  className="w-10 h-10"
+                  className="w-10 h-10 hover:scale-110 transition"
                 />
               </a>
 
@@ -536,114 +460,65 @@ export default function Home() {
 
         </div>
 
-        <div className="border-t border-white/10 mt-20 pt-10 text-center text-neutral-500">
-
-          © 2026 Kolaborasi Architecture & Contractor.
-          All Rights Reserved.
-
-        </div>
-
       </footer>
 
-      {/* FULLSCREEN IMAGE */}
-{selectedImage && (
+      {/* FULLSCREEN */}
+      {selectedImage && (
 
-  <div className="fixed inset-0 z-[999] bg-black/95 flex flex-col">
+        <div className="fixed inset-0 z-[999] bg-black/95 flex flex-col">
 
-    {/* CLOSE */}
-    <button
-      onClick={() => setSelectedImage(null)}
-      className="absolute top-6 right-8 z-50 text-white text-5xl"
-    >
-      ×
-    </button>
+          <button
+            onClick={() => setSelectedImage(null)}
+            className="absolute top-6 right-8 text-white text-5xl z-50"
+          >
+            ×
+          </button>
 
-    {/* MAIN IMAGE */}
-    <div className="flex-1 flex items-center justify-center px-10 pt-20 pb-6">
+          <div className="flex-1 flex items-center justify-center px-10 pt-20 pb-6">
 
-      <img
-        src={selectedImage}
-        alt="Preview"
-        className="max-h-[75vh] object-contain rounded-2xl"
-      />
+            <img
+              src={selectedImage.image}
+              alt={selectedImage.title}
+              className="max-h-[75vh] object-contain rounded-2xl"
+            />
 
-    </div>
+          </div>
 
-    {/* THUMBNAILS */}
-    <div className="px-10 overflow-x-auto">
+          <div className="bg-white text-black px-10 py-8">
 
-      <div className="flex gap-4 pb-6">
+            <div className="max-w-7xl mx-auto">
 
-        {[
-          selectedImage,
-          selectedImage,
-          selectedImage,
-          selectedImage,
-          selectedImage,
-        ].map((img, index) => (
+              <span className="bg-neutral-200 px-4 py-1 rounded-full text-sm font-medium">
+                {selectedImage.category}
+              </span>
 
-          <img
-            key={index}
-            src={img}
-            alt="Thumb"
-            className="w-32 h-24 object-cover rounded-xl cursor-pointer border border-white/20 hover:opacity-80 transition"
-          />
+              <h2 className="text-4xl font-black mt-5 mb-4">
+                {selectedImage.title}
+              </h2>
 
-        ))}
+              <div className="space-y-2 text-lg">
 
-      </div>
+                <p>
+                  <span className="font-semibold">
+                    Client:
+                  </span>{" "}
+                  {selectedImage.client}
+                </p>
 
-    </div>
+                <p>
+                  <span className="font-semibold">
+                    Lokasi:
+                  </span>{" "}
+                  {selectedImage.location}
+                </p>
 
-    {/* INFO */}
-    <div className="bg-white text-black px-10 py-8">
+              </div>
 
-      <div className="max-w-7xl mx-auto">
+            </div>
 
-        <div className="flex flex-wrap items-center gap-4 mb-4">
-
-          <span className="bg-neutral-200 px-4 py-1 rounded-full text-sm font-medium">
-            Large House
-          </span>
+          </div>
 
         </div>
-
-        <h2 className="text-4xl font-black mb-4">
-
-          Desain Rumah Modern 3 Lantai
-
-        </h2>
-
-        <div className="space-y-2 text-neutral-700 text-lg">
-
-          <p>
-            <span className="font-semibold">
-              Client:
-            </span>{" "}
-            Bapak Andi Wijaya
-          </p>
-
-          <p>
-            <span className="font-semibold">
-              Lokasi:
-            </span>{" "}
-            Bandung, Jawa Barat
-          </p>
-
-          <p>
-            <span className="font-semibold">
-              Kategori:
-            </span>{" "}
-            Modern Luxury House
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
 
       )}
 
