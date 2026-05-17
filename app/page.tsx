@@ -463,64 +463,105 @@ export default function Home() {
       </footer>
 
       {/* FULLSCREEN */}
-      {selectedImage && (
+{selectedImage && (
 
-        <div className="fixed inset-0 z-[999] bg-black/95 flex flex-col">
+  <div
+    onClick={() => setSelectedImage(null)}
+    className="fixed inset-0 z-[9999] bg-black/95 flex flex-col cursor-pointer"
+  >
 
-          <button
-            onClick={() => setSelectedImage(null)}
-            className="absolute top-6 right-8 text-white text-5xl z-50"
-          >
-            ×
-          </button>
+    {/* MAIN IMAGE */}
+    <div
+      onClick={(e) => e.stopPropagation()}
+      className="flex-1 flex items-center justify-center px-10 pt-16 pb-6"
+    >
 
-          <div className="flex-1 flex items-center justify-center px-10 pt-20 pb-6">
+      <img
+        src={selectedImage.image}
+        alt={selectedImage.title}
+        className="max-h-[78vh] max-w-[90vw] object-contain rounded-3xl shadow-2xl"
+      />
 
-            <img
-              src={selectedImage.image}
-              alt={selectedImage.title}
-              className="max-h-[75vh] object-contain rounded-2xl"
-            />
+    </div>
 
-          </div>
+    {/* THUMBNAILS */}
+    <div
+      onClick={(e) => e.stopPropagation()}
+      className="w-full overflow-x-auto bg-black/80 px-8 py-5"
+    >
 
-          <div className="bg-white text-black px-10 py-8">
+      <div className="flex gap-4 min-w-max">
 
-            <div className="max-w-7xl mx-auto">
+        {[...exteriorImages, ...interiorImages].map((item, index) => (
 
-              <span className="bg-neutral-200 px-4 py-1 rounded-full text-sm font-medium">
-                {selectedImage.category}
-              </span>
+          <img
+            key={index}
+            src={item.image}
+            alt={item.title}
+            onClick={() => setSelectedImage(item)}
+            className={`
+              w-36 h-24
+              object-cover
+              rounded-2xl
+              cursor-pointer
+              transition-all
+              duration-300
+              border
+              ${
+                selectedImage.image === item.image
+                  ? "border-white scale-105"
+                  : "border-white/10 opacity-60 hover:opacity-100"
+              }
+            `}
+          />
 
-              <h2 className="text-4xl font-black mt-5 mb-4">
-                {selectedImage.title}
-              </h2>
+        ))}
 
-              <div className="space-y-2 text-lg">
+      </div>
 
-                <p>
-                  <span className="font-semibold">
-                    Client:
-                  </span>{" "}
-                  {selectedImage.client}
-                </p>
+    </div>
 
-                <p>
-                  <span className="font-semibold">
-                    Lokasi:
-                  </span>{" "}
-                  {selectedImage.location}
-                </p>
+    {/* INFO */}
+    <div
+      onClick={(e) => e.stopPropagation()}
+      className="bg-white text-black px-10 py-8"
+    >
 
-              </div>
+      <div className="max-w-7xl mx-auto">
 
-            </div>
+        <span className="bg-neutral-200 px-4 py-1 rounded-full text-sm font-medium">
+          {selectedImage.category}
+        </span>
 
-          </div>
+        <h2 className="text-4xl font-black mt-5 mb-4">
+          {selectedImage.title}
+        </h2>
+
+        <div className="space-y-2 text-lg">
+
+          <p>
+            <span className="font-semibold">
+              Client:
+            </span>{" "}
+            {selectedImage.client}
+          </p>
+
+          <p>
+            <span className="font-semibold">
+              Lokasi:
+            </span>{" "}
+            {selectedImage.location}
+          </p>
 
         </div>
 
-      )}
+      </div>
+
+    </div>
+
+  </div>
+
+)}
 
     </main>
   );
