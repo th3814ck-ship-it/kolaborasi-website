@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function Home() {
 
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [selectedImage, setSelectedImage] = useState<any>(null);
 
   const slides = [
     "/projects/slide1.jpg",
@@ -83,8 +83,6 @@ export default function Home() {
     },
   ];
 
-  const allImages = [...exteriorImages, ...interiorImages];
-
   return (
 
     <main className="bg-black text-white overflow-x-hidden">
@@ -109,7 +107,8 @@ export default function Home() {
           <nav className="hidden md:flex gap-10 uppercase tracking-[0.2em] text-sm font-medium">
 
             <a href="#about">Tentang Kami</a>
-            <a href="#portfolio">Portfolio</a>
+            <a href="#services">Layanan Kami</a>
+            <a href="#pricing">Estimasi Harga</a>
 
           </nav>
 
@@ -120,6 +119,7 @@ export default function Home() {
       {/* HERO */}
       <section className="relative h-screen overflow-hidden">
 
+        {/* SLIDESHOW */}
         <div className="absolute inset-0 overflow-hidden">
 
           <div className="slider-track">
@@ -145,8 +145,10 @@ export default function Home() {
 
         </div>
 
+        {/* OVERLAY */}
         <div className="absolute inset-0 bg-black/60" />
 
+        {/* CONTENT */}
         <div className="relative z-10 flex items-center h-full">
 
           <div className="max-w-7xl mx-auto px-8 w-full">
@@ -182,6 +184,15 @@ export default function Home() {
                   className="bg-white text-black px-10 py-5 rounded-2xl font-bold text-lg hover:scale-105 transition duration-300"
                 >
                   Lihat Portfolio
+                </a>
+
+                <a
+                  href="https://wa.me/6282188357297"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border border-white/20 bg-white/10 backdrop-blur-md px-10 py-5 rounded-2xl text-lg hover:bg-white hover:text-black transition duration-300"
+                >
+                  Konsultasi Gratis
                 </a>
 
               </div>
@@ -225,6 +236,12 @@ export default function Home() {
               berbagai proyek hunian modern, villa eksklusif,
               cafe aesthetic, interior mewah, hingga proyek komersial.
 
+              <br /><br />
+
+              Kami menghadirkan desain yang elegan,
+              detail konstruksi berkualitas tinggi,
+              serta pengerjaan profesional dengan standar modern luxury.
+
             </p>
 
           </div>
@@ -258,7 +275,7 @@ export default function Home() {
 
                 <div
                   key={index}
-                  onClick={() => setSelectedIndex(index)}
+                  onClick={() => setSelectedImage(item)}
                   className="group overflow-hidden rounded-[2rem] cursor-pointer relative"
                 >
 
@@ -307,9 +324,7 @@ export default function Home() {
 
                 <div
                   key={index}
-                  onClick={() =>
-                    setSelectedIndex(exteriorImages.length + index)
-                  }
+                  onClick={() => setSelectedImage(item)}
                   className="group overflow-hidden rounded-[2rem] cursor-pointer relative"
                 >
 
@@ -364,6 +379,7 @@ export default function Home() {
 
               <a href="#about">Tentang Kami</a>
               <a href="#portfolio">Portfolio</a>
+              <a href="#pricing">Estimasi Harga</a>
 
             </div>
 
@@ -446,114 +462,54 @@ export default function Home() {
 
       </footer>
 
-      {/* FULLSCREEN GALLERY */}
-      {selectedIndex !== null && (
+      {/* FULLSCREEN */}
+      {selectedImage && (
 
-        <div className="fixed inset-0 z-[9999] bg-black/95 flex flex-col">
+        <div className="fixed inset-0 z-[999] bg-black/95 flex flex-col">
 
-          {/* CLOSE */}
           <button
-            onClick={() => setSelectedIndex(null)}
-            className="absolute top-5 right-8 z-50 text-white text-6xl"
+            onClick={() => setSelectedImage(null)}
+            className="absolute top-6 right-8 text-white text-5xl z-50"
           >
             ×
           </button>
 
-          {/* LEFT */}
-          <button
-            onClick={() =>
-              setSelectedIndex(
-                (selectedIndex - 1 + allImages.length) % allImages.length
-              )
-            }
-            className="absolute left-6 top-1/2 -translate-y-1/2 z-50 text-white text-6xl opacity-60 hover:opacity-100"
-          >
-            ‹
-          </button>
-
-          {/* RIGHT */}
-          <button
-            onClick={() =>
-              setSelectedIndex(
-                (selectedIndex + 1) % allImages.length
-              )
-            }
-            className="absolute right-6 top-1/2 -translate-y-1/2 z-50 text-white text-6xl opacity-60 hover:opacity-100"
-          >
-            ›
-          </button>
-
-          {/* IMAGE */}
-          <div className="flex-1 flex items-center justify-center px-10 pt-20 pb-10">
+          <div className="flex-1 flex items-center justify-center px-10 pt-20 pb-6">
 
             <img
-              src={allImages[selectedIndex].image}
-              alt={allImages[selectedIndex].title}
-              className="max-h-[80vh] object-contain rounded-3xl shadow-2xl"
+              src={selectedImage.image}
+              alt={selectedImage.title}
+              className="max-h-[75vh] object-contain rounded-2xl"
             />
 
           </div>
 
-          {/* THUMBNAILS */}
-          <div className="w-full overflow-x-auto bg-black/80 px-8 py-5">
-
-            <div className="flex gap-4 min-w-max">
-
-              {allImages.map((item, index) => (
-
-                <img
-                  key={index}
-                  src={item.image}
-                  alt={item.title}
-                  onClick={() => setSelectedIndex(index)}
-                  className={`
-                    w-36 h-24
-                    object-cover
-                    rounded-2xl
-                    cursor-pointer
-                    transition-all
-                    duration-300
-                    ${
-                      selectedIndex === index
-                        ? "border-2 border-white scale-105"
-                        : "opacity-60 hover:opacity-100"
-                    }
-                  `}
-                />
-
-              ))}
-
-            </div>
-
-          </div>
-
-          {/* INFO */}
           <div className="bg-white text-black px-10 py-8">
 
             <div className="max-w-7xl mx-auto">
 
               <span className="bg-neutral-200 px-4 py-1 rounded-full text-sm font-medium">
-                {allImages[selectedIndex].category}
+                {selectedImage.category}
               </span>
 
               <h2 className="text-4xl font-black mt-5 mb-4">
-                {allImages[selectedIndex].title}
+                {selectedImage.title}
               </h2>
 
-              <div className="space-y-2 text-lg text-neutral-700">
+              <div className="space-y-2 text-lg">
 
                 <p>
                   <span className="font-semibold">
                     Client:
                   </span>{" "}
-                  {allImages[selectedIndex].client}
+                  {selectedImage.client}
                 </p>
 
                 <p>
                   <span className="font-semibold">
                     Lokasi:
                   </span>{" "}
-                  {allImages[selectedIndex].location}
+                  {selectedImage.location}
                 </p>
 
               </div>
